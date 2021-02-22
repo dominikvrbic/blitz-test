@@ -1,6 +1,7 @@
 import { useState, ReactNode, PropsWithoutRef } from "react"
 import { FormProvider, useForm, UseFormOptions } from "react-hook-form"
 import * as z from "zod"
+import { Box } from "@chakra-ui/react"
 
 export interface FormProps<S extends z.ZodType<any, any>>
   extends Omit<PropsWithoutRef<JSX.IntrinsicElements["form"]>, "onSubmit"> {
@@ -67,9 +68,9 @@ export function Form<S extends z.ZodType<any, any>>({
         {children}
 
         {formError && (
-          <div role="alert" style={{ color: "red" }}>
+          <Box role="alert" style={{ color: "red" }}>
             {formError}
-          </div>
+          </Box>
         )}
 
         {submitText && (

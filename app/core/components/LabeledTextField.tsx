@@ -1,5 +1,6 @@
 import { forwardRef, PropsWithoutRef } from "react"
 import { useFormContext } from "react-hook-form"
+import { Box } from "@chakra-ui/react"
 
 export interface LabeledTextFieldProps extends PropsWithoutRef<JSX.IntrinsicElements["input"]> {
   /** Field name. */
@@ -23,16 +24,16 @@ export const LabeledTextField = forwardRef<HTMLInputElement, LabeledTextFieldPro
       : errors[props.name]?.message || errors[props.name]
 
     return (
-      <div {...outerProps}>
+      <Box {...outerProps}>
         <label>
           {label}
           <input disabled={isSubmitting} {...props} ref={register} />
         </label>
 
         {error && (
-          <div role="alert" style={{ color: "red" }}>
+          <Box role="alert" style={{ color: "red" }}>
             {error}
-          </div>
+          </Box>
         )}
 
         <style jsx>{`
@@ -51,7 +52,7 @@ export const LabeledTextField = forwardRef<HTMLInputElement, LabeledTextFieldPro
             margin-top: 0.5rem;
           }
         `}</style>
-      </div>
+      </Box>
     )
   }
 )
